@@ -1,4 +1,4 @@
-## Use with Python 3.8 (64-bit). Disable pip build isolation or preinstall numpy/msgpack so AirSim can build.
+# Use with Python 3.9 (64-bit). Preinstall numpy/msgpack or disable build isolation so AirSim can build with these pins.
 numpy==1.24.3
 msgpack-rpc-python==0.4.1
 msgpack-python==0.5.6

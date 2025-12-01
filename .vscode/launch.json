@@ -9,7 +9,7 @@
             "name": "Python Debugger: Current File",
             "type": "debugpy",
             "request": "launch",
-            "program": "M:/Projects/Games/CollisionAvoidance/CollisionAvoidance.py",
+            "program": "${workspaceFolder}/CollisionAvoidance.py",
             "console": "integratedTerminal"
         }
     ]

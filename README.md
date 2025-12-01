@@ -12,17 +12,17 @@ This repository demonstrates how to use [Microsoft AirSim](https://github.com/Mi
 ## 🧰 Prerequisites
 
 - **Hardware:** [Recommended hardware](https://wiki.unrealengine.com/Recommended_Hardware) for Unreal Engine 4 is required for running AirSim. We recommend using the precompiled [AirSimNH Windows binary](https://github.com/Microsoft/AirSim/releases/download/v1.1.7/Neighbourhood.zip).
-- **Python:** Use Python **3.8 (64-bit)** to ensure compatibility with TensorFlow and other dependencies.
+- **Python:** Use Python **3.9 (64-bit)** to ensure compatibility with TensorFlow and other dependencies.
 - **Simulator:** [AirSim](https://github.com/Microsoft/AirSim), launched via `run.bat` in the AirSimNH folder.
 
 ---
 
 ## ⚙️ Setting Up the Conda Environment
 
-To isolate dependencies and ensure compatibility, create and activate a Conda environment named `games`:
+Create and activate a Conda environment named `games` on Python 3.9:
 
 ```bash
-conda create -n games python=3.8
+conda create -n games python=3.9
 conda activate games
 ```
 
@@ -30,22 +30,23 @@ conda activate games
 
 ## 🧪 Installing Dependencies
 
-After activating the environment, AirSim 1.8.1 must see `numpy` and `msgpack` during its source build. Install those first, then the rest:
+AirSim 1.8.1 is source-only and imports `numpy`/`msgpack` during its build. Install everything with build isolation off so it can see the prereqs:
 
 ```bash
-pip install numpy==1.24.3 msgpack-rpc-python==0.4.1 msgpack-python==0.5.6
-pip install -r requirements.txt
+pip install --no-build-isolation -r requirements.txt
 ```
+
+If you prefer to avoid passing the flag each time, set once: `pip config set global.build-isolation false`.
 
 Key pins include:
 
 - `tensorflow==2.13.0` (uses `tensorflow.compat.v1`)
 - `numpy==1.24.3`
-- `airsim==1.8.1` (built from source; needs numpy/msgpack present during build)
+- `airsim==1.8.1` (source build; needs numpy/msgpack present)
 - `opencv-contrib-python==4.11.0.86`
 - plus supporting packages in `requirements.txt`
 
-Why preinstall `numpy`/`msgpack` when they’re already in `requirements.txt`? AirSim is only distributed as a source tarball, and its `setup.py` imports those modules before pip installs anything else. Preinstalling them (or disabling pip build isolation) ensures the AirSim build can import its prerequisites. They remain in `requirements.txt` to document the exact versions and so repeated installs stay consistent; pip will simply report them as already satisfied once they’re present.
+Note: `numpy`/`msgpack` stay in `requirements.txt` to document exact versions; with isolation disabled, pip installs them before building AirSim.
 
 ---
 
