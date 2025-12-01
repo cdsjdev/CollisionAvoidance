@@ -1,3 +1,21 @@
+# Python bytecode/cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Data/model artifacts
+carpix/active.png
+params.pkl
+
+# AirSim client caches (explicit files if already present)
 airsim/__pycache__/__init__.cpython-38.pyc
 airsim/__pycache__/__init__.cpython-313.pyc
 airsim/__pycache__/client.cpython-38.pyc
@@ -8,3 +26,5 @@ airsim/__pycache__/utils.cpython-313.pyc
 __pycache__/AirSimClient.cpython-38.pyc
 __pycache__/image_collection.cpython-38.pyc
 __pycache__/image_helper.cpython-38.pyc
+__pycache__/AirSimClient.cpython-313.pyc
+__pycache__/tf_softmax_layer.cpython-38.pyc

@@ -1,5 +1,9 @@
-absl-py==2.2.1
+## Use with Python 3.8 (64-bit). Disable pip build isolation or preinstall numpy/msgpack so AirSim can build.
+numpy==1.24.3
+msgpack-rpc-python==0.4.1
+msgpack-python==0.5.6
 airsim==1.8.1
+absl-py==2.2.1
 astunparse==1.6.3
 cachetools==5.5.2
 certifi==2025.1.31
@@ -23,9 +27,6 @@ libclang==18.1.1
 Markdown==3.7
 MarkupSafe==2.1.5
 matplotlib==3.7.5
-msgpack-python==0.5.6
-msgpack-rpc-python==0.4.1
-numpy==1.24.3
 oauthlib==3.2.2
 opencv-contrib-python==4.11.0.86
 opencv-python==4.11.0.86

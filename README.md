@@ -30,21 +30,22 @@ conda activate games
 
 ## 🧪 Installing Dependencies
 
-After activating the environment, install all required packages using the provided `requirements.txt`:
+After activating the environment, AirSim 1.8.1 must see `numpy` and `msgpack` during its source build. Install those first, then the rest:
 
 ```bash
+pip install numpy==1.24.3 msgpack-rpc-python==0.4.1 msgpack-python==0.5.6
 pip install -r requirements.txt
 ```
 
-This will install known-compatible versions of:
+Key pins include:
 
-- `tensorflow==2.6.2`
-- `numpy==1.19.2`
-- `six==1.15.0`
-- `matplotlib==3.3.4`
-- `airsim==1.8.1`
-- `opencv-contrib-python==4.5.3.56`
-- and other necessary dependencies
+- `tensorflow==2.13.0` (uses `tensorflow.compat.v1`)
+- `numpy==1.24.3`
+- `airsim==1.8.1` (built from source; needs numpy/msgpack present during build)
+- `opencv-contrib-python==4.11.0.86`
+- plus supporting packages in `requirements.txt`
+
+Why preinstall `numpy`/`msgpack` when they’re already in `requirements.txt`? AirSim is only distributed as a source tarball, and its `setup.py` imports those modules before pip installs anything else. Preinstalling them (or disabling pip build isolation) ensures the AirSim build can import its prerequisites. They remain in `requirements.txt` to document the exact versions and so repeated installs stay consistent; pip will simply report them as already satisfied once they’re present.
 
 ---
 
